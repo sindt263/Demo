@@ -1,0 +1,83 @@
+﻿@model Demo.Models.tbl_Users
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Users</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TGDaoTaoTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TGDaoTaoTu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TGDaoTaoDen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TGDaoTaoDen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TGThem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TGThem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDUser }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

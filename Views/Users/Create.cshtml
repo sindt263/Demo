@@ -1,0 +1,94 @@
+﻿@model Demo.Models.tbl_Users
+
+@{
+    ViewBag.Title = "Thêm nhân viên";
+    Layout = null;
+}
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FromCreateNV" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DienThoai, htmlAttributes: new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @*@Html.EditorFor(model => model.GioiTinh)*@
+                    <select id="GioiTinh" name="GioiTinh" class="form-control">
+                        <option value="true">Nam</option>
+                        <option value="false">Nữ</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TGDaoTaoTu, htmlAttributes: new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TGDaoTaoTu, new { htmlAttributes = new { @class = "form-control NgayThangNam" } })
+                @Html.ValidationMessageFor(model => model.TGDaoTaoTu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TGDaoTaoDen, htmlAttributes: new { @class = "control-label col-md-2" })*
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TGDaoTaoDen, new { htmlAttributes = new { @class = "form-control NgayThangNam" } })
+                @Html.ValidationMessageFor(model => model.TGDaoTaoDen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lock, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @*@Html.EditorFor(model => model.Lock, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <select id="Lock" name="Lock" class="form-control">
+                        <option value="0">Đang làm</option>
+                        <option value="1">Khóa</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Lock, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="button" id="btnCreateNV" value="Thêm mới" class="btn btn-success" />*@
+                <button type="button" id="btnCreateNV" disabled="disabled" class="btn btn-success">Lưu mới</button>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Demo.Models.tbl_Users>
+@{ 
+    Layout = null;
+    string GioiTinh, TrangThai;
+    int i = 0;
+}
+
+<table class="table classtable" id="tblDSNV" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+               STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DienThoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </th>
+            <th>
+               Thời gian đào tạo
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lock)
+            </th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            if (item.GioiTinh == true) { GioiTinh = "Nam"; } else { GioiTinh = "Nữ"; }
+            if (item.Lock == true) { TrangThai = "Đã khóa"; } else { TrangThai = "Đang mở"; }
+            i = i + 1;
+                <tr>
+
+                    <td>
+                        @Html.Raw(i)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IDUser)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DienThoai)
+                    </td>
+                    <td>
+                        @Html.Raw(@GioiTinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TGDaoTaoTu) - @Html.DisplayFor(modelItem => item.TGDaoTaoDen)
+                    </td>
+                    <td>
+                        @Html.Raw(TrangThai)
+                    </td>
+                    <td>
+                        @*<button class="btn btn-primary" onclick="fnOpenModalSuaNV('@item.IDUser')">Sửa</button>*@
+                        <a class="btn btn-primary" href="/Users/Edit/@item.IDUser">Sửa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+</table>

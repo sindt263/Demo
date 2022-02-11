@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/Scripts/Other/BootstrapValidator/css/bootstrapValidator.min.css" rel="stylesheet" />
+    <link href="~/Scripts/Other/autocomplete/JQueryAutoComplete/jquery-ui.css" rel="stylesheet" />
+    <style>
+
+        /*css table*/
+        .classtable thead th {
+            background-color: #0094ff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: lightgray;
+        }
+
+
+        /*css autocomplete*/
+        .ui-autocomplete {
+            background-color: white;
+            z-index: 2147483647;
+        }
+
+        .ui-datepicker{
+            background-color:#808080;
+        }
+
+        .ui-datepicker-calendar thead {
+            background-color:#0026ff;
+            color:white;
+        }
+        .ui-datepicker-calendar tbody {
+            background-color:gainsboro;
+            color:white;
+        }
+
+        .ui-datepicker-header{
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("QL nhân viên", "Index", "Users")</li>
+                    <li>@Html.ActionLink("Danh mục cấp bậc", "Index", "DanhMucCapBac")</li>
+                    <li>@Html.ActionLink("Quản lý nhóm", "Index", "Nhom")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+
+    @*Modal thông báo*@
+
+    <!-- Modal Dialog -->
+    <div class="modal fade" id="ModelThongBao" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ModelThongBao_title"></h4>
+                </div>
+                <div class="modal-body">
+                    <label id="ModelThongBao_message"></label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script src="~/Scripts/Style.js?v=@DateTime.Now"></script>
+<script src="~/Content/DataTables/datatables.min.js"></script>
+<script src="~/Scripts/Other/BootstrapValidator/js/bootstrapValidator.min.js"></script>
+<script src="~/Scripts/Other/autocomplete/JQueryAutoComplete/jquery-ui.js"></script>

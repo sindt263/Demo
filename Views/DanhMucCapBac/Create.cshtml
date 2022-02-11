@@ -1,0 +1,71 @@
+﻿@model Demo.Models.tbl_DanhMucCapBac
+
+@{
+    ViewBag.Title = "Create";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+
+<h2>Tạo mới cấp bậc</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FromCreateCapBac" })) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal" id="divCreateCapBac">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.IDCapBac)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TenCapBac, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenCapBac, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenCapBac, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LevelCapBac, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LevelCapBac, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LevelCapBac, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Lock, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @*@Html.EditorFor(model => model.Lock, new { htmlAttributes = new { @class = "form-control" } })*@
+                <select id="Lock" name="Lock" class="form-control">
+                    <option value="false">Đang dùng</option>
+                    <option value="true">Khóa</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Lock, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" id="btnCapNhat" class="btn btn-success">Cập nhật</button>
+            <button type="button" id="btnLuuCapBac" class="btn btn-success">Lưu mới</button>
+            <button type="button" onclick="fnNhapMoi()" class="btn btn-default">Nhập mới</button>
+        </div>
+    </div>
+</div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

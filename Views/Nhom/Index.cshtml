@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Demo.Models.tbl_DanhMucCapBac>
+
+@{
+    ViewBag.Title = "Danh Sách nhóm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>Quản lý nhóm</title>
+
+<html>
+<body>
+    <div class="container">
+
+        @*<p>
+                <a class="btn btn-primary" href="@Url.Action("DanhMucCapBac", "Create")">Tạo mới</a>
+
+            </p>*@
+        <div class="container row">
+            @Html.Action("Create", "Nhom")
+        </div>
+        <div id="divDSCapBac">
+
+            <table class="table classtable" id="tblDSNhom" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>
+                            Tên nhóm
+                        </th>
+                        <th>
+                            Số thành viên
+                        </th>
+                        <th>
+                            Ghi chú
+                        </th>
+                        <th>
+                            Trạng thái
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    @*Modal thêm chi tiết cho nhóm*@
+    <div class="modal fade" id="ModelChiTiet" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="">Thêm thành viên nhóm</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input id="IDNhom" type="text" style="display:none"/>
+                            <input id="IDThanhVien" type="text" style="display:none"/>
+                            <label>Tên thành viên</label>
+                            <input class=" form-control" type="text" id="txtTenThanhVien" />
+                        </div>
+                        <div class="col-md-5">
+                           
+                            <label >Chọn cấp bậc</label>
+                            <select class=" form-control" id="slCapBac" ></select>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="btnThemThanhVien" onclick="fnADDThanhVIenVaoNhom();" style="float:right; margin-top:23px" class="btn btn-success">Lưu</button>
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="divDSThanhVienNhom" style="margin-top:20px">
+
+                    </div>
+                    @*<table id="tblDSThanhVien" class="table classtable" >
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Họ tên</th>
+                                <th>Cấp bậc</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>*@
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+@section scripts{
+    @*<script src="~/Scripts/LoadDataTable.js"></script>*@
+    <script src="~/Scripts/Nhom/Nhom.js?v=@DateTime.Now"></script>
+
+
+}

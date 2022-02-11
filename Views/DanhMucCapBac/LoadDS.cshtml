@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Demo.Models.tbl_DanhMucCapBac>
+@{
+    Layout = null;
+    int i = 0;
+    string TrangThai = "";
+}
+
+
+<table class="table classtable" id="tblDSCapBac" style="width:100%">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenCapBac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GhiChu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LevelCapBac)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            if (item.Lock == true) { TrangThai = "Đã khóa"; } else { TrangThai = "Đang mở"; }
+            <tr id="@item.IDCapBac" Lock="@Html.Raw(item.Lock)">
+                <td>
+                    @{i = i + 1; } @Html.Raw(i)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenCapBac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td>
+                    @Html.Raw(TrangThai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LevelCapBac)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.AutoID })*@
+                    <button type="button" onclick="XoaCapBac(@item.IDCapBac)" class="btn btn-danger">Xóa</button>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

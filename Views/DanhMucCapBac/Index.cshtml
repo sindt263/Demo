@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Demo.Models.tbl_DanhMucCapBac>
+
+@{
+    ViewBag.Title = "Danh mục cấp bậc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>Quản lý danh mục cấp bậc</title>
+
+<html>
+<body>
+    <div class="container">
+
+        @*<p>
+                <a class="btn btn-primary" href="@Url.Action("DanhMucCapBac", "Create")">Tạo mới</a>
+
+            </p>*@
+        <div class="container row">
+            @Html.Action("Create", "DanhMucCapBac")
+        </div>
+        <div id="divDSCapBac">
+            @Html.Action("LoadDS", "DanhMucCapBac")
+        </div>
+
+    </div>
+</body>
+</html>
+@section scripts{
+    @*<script src="~/Scripts/LoadDataTable.js"></script>*@
+    <script src="~/Scripts/CapBac/CapBac.js?v=@DateTime.Now"></script>
+   
+
+}
